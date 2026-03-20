@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ── Variables ── */
+:root {
+  --bg:        #1a1a2e;
+  --card-bg:   #ffffff;
+  --text:      #1a1a2e;
+  --muted:     #6b6b80;
+  --accent:    #e84393;
+  --accent2:   #6c3bff;
+  --border:    #e2ddd8;
+  --tag-bg:    #f5f0ff;
+  --tag-color: #6c3bff;
+  --shadow:    0 20px 60px rgba(108,59,255,.25);
+}
+
+/* ── Página / modo oscuro ── */
+.page {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1rem;
+  font-family: 'DM Sans', sans-serif;
+  transition: background .4s;
+}
+
+.page.dark {
+  --bg:        #0f0f1a;
+  --card-bg:   #1a1a2e;
+  --text:      #e8e4f0;
+  --muted:     #9a96b0;
+  --border:    #2e2e45;
+  --tag-bg:    #25203a;
+  --tag-color: #c4a8ff;
+  --shadow:    0 20px 60px rgba(0,0,0,.5);
+}
+
+/* ── Card ── */
+.card {
+  background: var(--card-bg);
+  color: var(--text);
+  border-radius: 40px 8px 40px 8px;
+  padding: 2.5rem 2rem;
+  max-width: 560px;
+  width: 100%;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  transition: background .4s, color .4s, box-shadow .4s;
+  position: relative;
+  overflow: hidden;
+  .card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    160deg,
+    var(--accent2) 0%,
+    var(--accent2) 8%,
+    transparent 8%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    160deg,
+    transparent 92%,
+    var(--accent) 92%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card > * {
+  position: relative;
+  z-index: 1;
+}
+}
+
+/* ── Header ── */
+.card-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.avatar-wrap {
+  display: inline-block;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  box-shadow: 0 8px 24px rgba(232,67,147,.3);
+  margin-bottom: 1rem;
+}
+
+.avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  display: block;
+  object-fit: cover;
+  border: 3px solid var(--card-bg);
+}
+
+.name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin: 0 0 .25rem;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.role {
+  font-size: .95rem;
+  color: var(--muted);
+  margin: 0 0 .2rem;
+}
+
+.city {
+  font-size: .85rem;
+  color: var(--muted);
+  margin: 0 0 1rem;
+}
+
+/* ── Frase rotativa ── */
+.frase-box {
+  background: var(--tag-bg);
+  border-radius: 12px;
+  padding: .75rem 1rem;
+  margin: .5rem 0 1rem;
+}
+
+.frase {
+  font-size: .9rem;
+  color: var(--tag-color);
+  font-style: italic;
+  margin: 0 0 .5rem;
+}
+
+/* ── Secciones ── */
+.section {
+  border-top: 1px solid var(--border);
+  padding: 1.25rem 0;
+}
+
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--accent2);
+  margin: 0 0 .75rem;
+}
+
+/* ── Contacto ── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .5rem;
+}
+
+.contact-item {
+  font-size: .85rem;
+  color: var(--muted);
+}
+
+.contact-item a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-item a:hover { text-decoration: underline; }
+
+/* ── Bio ── */
+.bio {
+  font-size: .9rem;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 0;
+  white-space: pre-line;
+}
+
+/* ── Skills ── */
+.skills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.skill-tag {
+  background: var(--tag-bg);
+  color: var(--tag-color);
+  border-radius: 999px;
+  padding: .3rem .85rem;
+  font-size: .82rem;
+  font-weight: 500;
+  transition: transform .15s;
+}
+
+.skill-tag:hover {
+  transform: scale(1.05);
+}
+
+/* ── Formación ── */
+.edu-item {
+  display: flex;
+  gap: .75rem;
+  align-items: flex-start;
+  margin-bottom: .75rem;
+}
+
+.edu-dot {
+  width: 10px;
+  height: 10px;
+  min-width: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  margin-top: 5px;
+}
+
+.edu-item strong {
+  font-size: .9rem;
+}
+
+.edu-inst {
+  font-size: .8rem;
+  color: var(--muted);
+  margin: .15rem 0 0;
+}
+
+/* ── Proyectos ── */
+.project-card {
+  background: var(--tag-bg);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: .75rem;
+  border-left: 3px solid var(--accent);
+}
+
+.project-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 .35rem;
+  color: var(--text);
+}
+
+.project-desc {
+  font-size: .85rem;
+  color: var(--muted);
+  margin: 0 0 .6rem;
+}
+
+.tech-wrap { display: flex; flex-wrap: wrap; gap: .35rem; }
+
+.tech-tag {
+  background: var(--card-bg);
+  color: var(--accent2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: .2rem .6rem;
+  font-size: .75rem;
+  font-weight: 500;
+}
+
+/* ── Extra ── */
+.extra-section {
+  animation: fadeIn .35s ease;
+}
+
+.extra-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.extra-list li {
+  font-size: .9rem;
+  color: var(--text);
+}
+
+/* ── Botones ── */
+.btn-row {
+  display: flex;
+  gap: .75rem;
+  justify-content: center;
+  padding-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+  border-radius: 999px;
+  padding: .6rem 1.4rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .88rem;
+  font-weight: 500;
+  transition: transform .15s, box-shadow .15s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,.15);
+}
+
+.btn-frase {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  font-size: .78rem;
+  padding: .4rem 1rem;
+}
+
+.btn-toggle {
+  background: var(--accent2);
+  color: #fff;
+}
+
+.btn-dark {
+  background: var(--tag-bg);
+  color: var(--tag-color);
+  border: 1px solid var(--border);
+}
+
+/* ── Animaciones ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

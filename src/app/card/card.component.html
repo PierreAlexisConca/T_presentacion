@@ -1,0 +1,68 @@
+<div class="page" [class.dark]="darkMode">
+  <div class="card">
+
+    <!-- Cabecera -->
+    <div class="card-header">
+      <div class="avatar-wrap">
+        <img [src]="foto" [alt]="nombre" class="avatar" />
+      </div>
+      <h1 class="name">{{ nombre }}</h1>
+      <p class="role">{{ carrera }} · {{ semestre }}</p>
+      <p class="city">📍 {{ ciudad }}</p>
+    </div>
+
+    <!-- Contacto -->
+    <div class="section contact-grid">
+      <div class="contact-item">📧 <a [href]="'mailto:' + correo">{{ correo }}</a></div>
+      <div class="contact-item">📱 {{ telefono }}</div>
+      <div class="contact-item">🐙 <a [href]="github" target="_blank">GitHub</a></div>
+      <div class="contact-item">💼 <a [href]="linkedin" target="_blank">LinkedIn</a></div>
+    </div>
+
+    <!-- Sobre mí -->
+    <div class="section">
+      <h2 class="section-title">Sobre mí</h2>
+      <p class="bio">{{ sobreMi }}</p>
+    </div>
+
+    <!-- Skills -->
+    <div class="section">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-wrap">
+        <span class="skill-tag" *ngFor="let skill of skills">{{ skill }}</span>
+      </div>
+    </div>
+
+    <!-- Formación -->
+    <div class="section">
+      <h2 class="section-title">Formación Académica</h2>
+      <div class="edu-item" *ngFor="let edu of formacion">
+        <div class="edu-dot"></div>
+        <div>
+          <strong>{{ edu.titulo }}</strong>
+          <p class="edu-inst">{{ edu.institucion }} — {{ edu.anio }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Proyectos -->
+    <div class="section">
+      <h2 class="section-title">Proyectos</h2>
+      <div class="project-card" *ngFor="let p of proyectos">
+        <h3 class="project-name">{{ p.nombre }}</h3>
+        <p class="project-desc">{{ p.descripcion }}</p>
+        <div class="tech-wrap">
+          <span class="tech-tag" *ngFor="let t of p.tecnologias">{{ t }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botón modo oscuro -->
+    <div class="btn-row">
+      <button class="btn btn-dark" (click)="toggleDarkMode()">
+        {{ darkMode ? '☀️ Modo claro' : '🌙 Modo oscuro' }}
+      </button>
+    </div>
+
+  </div>
+</div>
